@@ -1,0 +1,167 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Foundation | Welcome</title>
+        <link rel="stylesheet" href="css/foundation.css"/>
+        <script src="js/vendor/modernizr.js"></script>
+        <script src="js/vendor/jquery.js"></script>
+        <script src="js/geolocationTrack.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js"></script>
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <script>
+            $(function(){
+               $("#watchButton").click(function () {
+                  $(this).text(function(i, text){
+                      return text === "Start Tracking" ? "Stop Tracking" : "Start Tracking";
+                  })
+               });
+            })          
+        </script>
+    </head>
+    <body style="max-width:360px; margin:0 auto">
+        <div class="off-canvas-wrap" data-offcanvas>
+            <div class="inner-wrap">
+                <aside class="left-off-canvas-menu">
+                    <ul class="off-canvas-list">
+                        <li>
+                            <a href="#">Link 1</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Link 3</a>
+                        </li>
+                    </ul>
+                </aside>
+                <nav class="tab-bar">
+                    <a class="left-off-canvas-toggle menu-icon" aria-expanded="false"><span></span></a>
+                    <section class="middle tab-bar-section">
+                        <h1 class="title">Walkie</h1>
+                    </section>
+                </nav>
+                <section id="main-content">
+                    <div class="row">
+                        <div class="small-12 columns">
+                            <div class="row">
+                                <div class="content_container">
+                                    <div class="small-6 columns home_btns">
+                                        <p>Distance <br/><span class="value">0.0 km</span></p>
+                                    </div>
+                                    <div class="small-6 columns home_btns">
+                                        <p>Duration <br/><span class="value" id="duration">00:00:00</span></p>
+                                    </div>
+                                </div>
+                                <div id="mapPlaceholder" style="height:500px; width: 100%;">
+</div>
+                                <div class="camera_container">
+                                    <input class="camera_button" type="file" accept="image/*" capture="camera">
+                                </div>
+                                <div class="record_footer">
+                                    <button id="watchButton">Start Tracking</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-12 large-12 columns">
+                            <div id="messageArea"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <script>
+                            
+                        </script>
+                    </div>
+                    <div class="row">
+                        <div id="resultArea">
+                            <h3>Core information</h3>
+                            <label>Latitude (degrees)</label>
+                            <input type="text" id="latitude" size="60" readonly="true" /> <br/>
+
+                            <label>Longitude (degrees)</label>
+                            <input type="text" id="longitude" size="60" readonly="true" /> <br/>
+
+                            <label>Timestamp</label>
+                            <input type="text" id="timestamp" size="60" readonly="true" />
+                        </div>
+                    </div>
+                </section>
+                <a class="exit-off-canvas" href="#"></a>
+            </div>
+        </div>
+        <script src="js/vendor/jquery.js"></script>
+        <script src="js/foundation.min.js"></script>
+        <script>
+              $(document).foundation();
+            
+            if (navigator.geolocation)
+            {
+                navigator.geolocation.getCurrentPosition(showCurrentLocation);
+            }
+            else
+            {
+               alert("Geolocation API not supported.");
+            }
+
+            function showCurrentLocation(position)
+            {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                var coords = new google.maps.LatLng(latitude, longitude);
+
+                var mapOptions = {
+                zoom: 17,
+                center: coords,
+                mapTypeControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            //create the map, and place it in the HTML map div
+            map = new google.maps.Map(
+            document.getElementById("mapPlaceholder"), mapOptions
+            );
+
+            //place the initial marker
+            var marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            title: "Current location!"
+            });
+            }
+
+            var h1 = document.getElementById('duration'),
+                start = document.getElementById('watchButton'),
+                stop = document.getElementById('stop'),
+                seconds = 0, minutes = 0, hours = 0,
+                t;
+
+            function add() {
+                seconds++;
+                if (seconds >= 60) {
+                    seconds = 0;
+                    minutes++;
+                    if (minutes >= 60) {
+                        minutes = 0;
+                        hours++;
+                    }
+                }
+                
+                h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+                timer();
+            }
+
+            function timer() {
+                t = setTimeout(add, 1000);
+            }
+
+            /* Start button */
+            start.onclick = add;
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,175 @@
+body {
+	height: 100vh;
+}
+
+a.submit_login {
+    background: #81C784;
+    width: 100%;
+    display:block;
+    margin-bottom: 10px;
+    padding-top: 1rem;
+    padding-right: 2rem;
+    padding-bottom: 1.0625rem;
+    padding-left: 2rem;
+    color: #FFF;
+    text-align: center;
+    transition: background-color 300ms ease-out;
+}
+
+a.submit_login:hover {
+	background: #66BB6A;
+}
+
+button.facebook_login {
+	background: #3B5998;
+    width: 100%;
+}
+
+button.facebook_login:hover {
+	background: #2f4779;
+}
+
+.tab-bar {
+	background: #4CAF50;
+}
+
+.content_container {
+	background: #f6f6f6;
+	box-shadow:	0px 1px 1px 0px rgba(0, 0, 0, 0.35);
+    display: block;
+	float: left;
+	width: 100%;
+	position: relative;
+	z-index: 5;
+}
+
+.splashscreen {
+	background: #4CAF50;
+    width: 100%;
+    height: 100%;
+    float:left;
+}
+
+
+.splash_logo {
+	width: 100%;
+    height:250px;
+    background: url('img/logo.png') center center no-repeat;
+    display:block;
+    -webkit-animation: fadein 2s;
+    animation: fadein 2s;
+}
+
+.splashscreen .splash_logo {
+	    margin: 50% 0 0 0;
+}
+
+.splashscreen .splash_title {
+	width:100%;
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #FFF;
+    -webkit-animation: fadein 2s;
+    animation: fadein 2s;
+}
+
+.splash_title {
+	color: #81C784;
+	width:100%;
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@-webkit-keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+ul.off-canvas-list hr {
+	margin:0;
+}
+
+ul.off-canvas-list .first {
+	height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+}
+
+.home_btns {
+	border-right: 2px solid #d0d0d0;
+    border-left: 2px solid #FFF;
+    text-align: center;
+    padding: 10px 0;
+    text-transform: uppercase;
+}
+
+	.home_btns:hover .value{
+    	color: #66BB6A;
+    }
+	
+	.home_btns p {
+    	margin:0;
+    }
+
+	.home_btns .value {
+    	color: #81C784;
+    }
+
+.camera_container {
+    position: absolute;
+	left: 15px;
+    top: 85px;
+    width: 50px;
+    height: 50px;
+}
+
+	input[type=file].camera_button {
+        height: 50px;
+        width: 50px;
+    	background: #FF3D00 url(img/camera_icon.png) no-repeat center center;
+        border-radius: 50%;
+        padding:0;
+        margin:0;
+        box-shadow:         0px 2px 3px 0px rgba(0, 0, 0, 0.35);
+        border: none;
+    }
+
+	.camera_button:hover {
+    	background: #66BB6A url(img/camera_icon.png) no-repeat center center;
+    }
+
+	.camera_button:focus {
+    	outline: 0;
+    }
+
+.record_footer {
+	position: absolute;
+    bottom:0;
+    width: 100%;
+    height: 75px;
+    z-index: 5;
+    text-align: center;
+    background: #81C784;
+}
+
+button#watchButton {
+    margin:0 auto;
+    padding: 10px 20px !important;
+    padding:0;
+    background: none;
+    width: 100%;
+    height: 100%;
+}
+
+button:hover {
+    background: #66BB6A;
+}
